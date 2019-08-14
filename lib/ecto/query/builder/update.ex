@@ -3,7 +3,7 @@ import Kernel, except: [apply: 2]
 defmodule Ecto.Query.Builder.Update do
   @moduledoc false
 
-  @keys [:set, :inc, :push, :pull]
+  @keys [:set, :inc, :push, :pull, :prepend]
   alias Ecto.Query.Builder
 
   @doc """
@@ -196,5 +196,6 @@ defmodule Ecto.Query.Builder.Update do
   # It is the opposite of "left in right" in the query API.
   defp type_for_key(:push, type), do: {:out, type}
   defp type_for_key(:pull, type), do: {:out, type}
+  defp type_for_key(:prepend, type), do: {:out, type}
   defp type_for_key(_, type),     do: type
 end
